@@ -1,0 +1,379 @@
+<!DOCTYPE html><html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>9주차 합성 가리고 외우기</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+--bg:#f4f1ea;--paper:#fffdf8;--ink:#1d2329;--sub:#5d6670;--line:#ddd5c6;--acc:#0f5f73;--acc2:#dff0f4;--mask:#2a3540;--maskt:#c9d4dc;--start:#7a5c1f;--final:#0f5f73;--mid:#6a6f76;--side:#8a6fb0;--hl:#fff3c4}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#15191d;--paper:#1e2429;--ink:#e8ecef;--sub:#9aa5ae;--line:#323b43;--acc:#7cc6d6;--acc2:#1d3940;--mask:#3a4752;--maskt:#c2ccd3;--start:#d7b46a;--final:#7cc6d6;--mid:#9aa5ae;--side:#b9a2dd;--hl:#3b3520}}
+:root[data-theme="dark"]{--bg:#15191d;--paper:#1e2429;--ink:#e8ecef;--sub:#9aa5ae;--line:#323b43;--acc:#7cc6d6;--acc2:#1d3940;--mask:#3a4752;--maskt:#c2ccd3;--start:#d7b46a;--final:#7cc6d6;--mid:#9aa5ae;--side:#b9a2dd;--hl:#3b3520}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;line-height:1.5}
+.wrap{max-width:1180px;margin:0 auto;padding:22px 16px 60px}
+h1{font-size:clamp(22px,4vw,30px);font-weight:700;margin:0;letter-spacing:-.02em}
+.lead{color:var(--sub);font-size:14px;margin:4px 0 16px}
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);padding:8px 0 10px;border-bottom:1px solid var(--line)}
+.tabs,.modes{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+.tabs::-webkit-scrollbar{display:none}
+.modes{margin-top:8px;flex-wrap:wrap;overflow:visible}
+button{font:inherit;cursor:pointer;border-radius:999px;white-space:nowrap}
+button:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+.tab{border:1px solid var(--line);background:var(--paper);color:var(--ink);padding:6px 13px;font-size:14px;font-family:'Poppins','Noto Sans KR',sans-serif;font-weight:600}
+.tab.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.tab.allt{font-family:'Noto Sans KR',sans-serif}
+.mode{border:1px dashed var(--sub);background:transparent;color:var(--sub);padding:5px 12px;font-size:13px}
+.mode.on{border-style:solid;border-color:var(--acc);background:var(--acc2);color:var(--acc);font-weight:700}
+.mode.all{border-style:solid}
+.mode.view{border-style:solid;border-color:var(--line);color:var(--ink)}
+.mode.view.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.dh{margin:26px 0 12px}
+.dn{font-family:'Poppins','Noto Sans KR',sans-serif;font-size:24px;font-weight:700}
+.ko{font-family:'Noto Sans KR',sans-serif;font-size:15px;font-weight:400;color:var(--sub);margin-left:4px}
+.cls{font-size:13px;color:var(--acc);font-weight:600}
+.iu{font-size:13px;color:var(--sub);word-break:break-all;margin-top:2px;display:inline-block}
+.memo{font-size:14px;margin:8px 0 0;max-width:80ch}
+.rt{font-size:15px;font-weight:700;margin:20px 0 4px;display:flex;align-items:center;gap:8px}
+.rt::before{content:'';width:4px;height:16px;border-radius:2px;background:var(--acc)}
+.alt{font-size:13px;color:var(--sub);margin:0 0 10px;max-width:90ch}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px;margin-top:8px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:8px;border-top:4px solid var(--mid)}
+.card.k-start{border-top-color:var(--start)}.card.k-final{border-top-color:var(--final)}
+.card.k-side{border-top-color:var(--side)}
+.card.k-br{border-style:dashed;border-top-style:solid}
+.top{display:flex;gap:8px;align-items:flex-start;flex-wrap:wrap}
+.badge{flex:none;font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;background:var(--bg);color:var(--sub);border:1px solid var(--line)}
+.k-start .badge{color:var(--start)}.k-final .badge{color:var(--final)}.k-side .badge{color:var(--side)}
+.brk{flex:none;font-size:11px;color:var(--sub);border:1px dashed var(--sub);border-radius:6px;padding:1px 6px}
+.reag{font-size:12.5px;color:var(--acc);font-weight:600;line-height:1.4;flex:1 1 140px}
+.mol{background:#fff;border-radius:8px;min-height:120px;display:flex;align-items:center;justify-content:center;padding:6px}
+.mol svg{max-width:100%;height:auto;max-height:190px}
+.nm{font-size:14px;font-weight:700;display:flex;gap:6px;align-items:baseline;flex-wrap:wrap}
+.num{font-size:12px;color:var(--sub);font-weight:400;border:1px solid var(--line);border-radius:4px;padding:0 5px}
+.note{font-size:13px;color:var(--sub);margin:0}
+.note b,.memo b,.alt b{color:var(--ink);background:var(--hl);padding:0 2px;border-radius:3px;font-weight:700}
+.pts{margin-top:14px;background:var(--paper);border:1px solid var(--line);border-left:4px solid var(--acc);border-radius:10px;padding:10px 14px}
+.pt-h{font-weight:700;font-size:14px;margin-bottom:2px}
+.pts ul{margin:0;padding-left:18px;font-size:13.5px}
+.foot{color:var(--sub);font-size:12px;margin-top:22px}
+body.compact .grid{grid-template-columns:repeat(auto-fill,minmax(165px,1fr));gap:8px}
+body.compact .card{padding:8px;gap:5px}
+body.compact .note,body.compact .memo,body.compact .alt{display:none}
+body.compact .mol{min-height:84px}
+body.compact .mol svg{max-height:130px}
+body.compact .reag{font-size:11.5px}
+body.compact .nm{font-size:12.5px}
+body.compact .pts{display:none}
+.masked{position:relative;cursor:pointer;border-radius:8px}
+.h-struct,.h-mid,.h-name,.h-reag,.h-note{cursor:pointer}
+.masked::after{content:'눌러서 확인';position:absolute;inset:0;background:var(--mask);color:var(--maskt);border-radius:8px;
+display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;letter-spacing:.02em;min-height:22px}
+.reag.masked,.nm.masked,.iu.masked{min-width:120px;min-height:22px}
+@media (prefers-reduced-motion:no-preference){.masked::after{transition:opacity .15s}}
+
+:root{--okc:#2f7d4f;--okb:#e5f3ea;--badc:#b8433a;--badb:#f9e6e3}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--okc:#6cc08f;--okb:#1d3326;--badc:#e08378;--badb:#3a2220}}
+:root[data-theme="dark"]{--okc:#6cc08f;--okb:#1d3326;--badc:#e08378;--badb:#3a2220}
+.quizsec{margin-top:22px}
+.qh{font-family:'Poppins','Noto Sans KR',sans-serif;font-size:24px;font-weight:700}
+.qsub{color:var(--sub);font-size:14px;margin:2px 0 12px;max-width:80ch}
+.qrow{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin:6px 0}
+.qlab{font-size:12.5px;color:var(--sub);width:34px;flex:none}
+.chip{border:1px solid var(--line);background:var(--paper);color:var(--ink);padding:5px 12px;font-size:13px}
+.chip.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.score{display:flex;gap:14px;font-size:14px;margin:14px 0 8px;color:var(--sub);flex-wrap:wrap}
+.score b{color:var(--ink);font-size:16px}
+.qcard{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:16px;max-width:760px}
+.qp{font-size:13px;color:var(--acc);font-weight:700;margin-bottom:8px}
+.qbig{background:#fff;border-radius:10px;display:flex;justify-content:center;align-items:center;padding:12px;min-height:170px}
+.qbig svg{max-width:100%;height:auto;max-height:240px;width:auto;transform-origin:center}
+.qname{font-size:20px;font-weight:700;line-height:1.35;padding:6px 0 2px;word-break:break-word}
+.qname.iu{font-size:15px;font-weight:600;font-family:'Noto Sans KR',sans-serif}
+.opts{display:grid;gap:8px;margin-top:12px}
+.opts.txt{grid-template-columns:1fr}
+.opts.img{grid-template-columns:repeat(2,minmax(0,1fr))}
+.opt{border:1.5px solid var(--line);background:var(--paper);color:var(--ink);border-radius:10px;padding:10px 12px;text-align:left;font-size:14.5px;white-space:normal;display:flex;gap:8px;align-items:center}
+.opt .k{flex:none;font-size:12px;color:var(--sub);border:1px solid var(--line);border-radius:5px;padding:0 6px}
+.opts.img .opt{flex-direction:column;align-items:stretch;padding:6px}
+.opts.img .opt .k{align-self:flex-start}
+.opt .pic{background:#fff;border-radius:7px;display:flex;justify-content:center;align-items:center;min-height:110px;padding:4px}
+.opt .pic svg{max-width:100%;height:auto;max-height:150px}
+.opt:hover{border-color:var(--acc)}
+.opt.ok{border-color:var(--okc);background:var(--okb)}
+.opt.bad{border-color:var(--badc);background:var(--badb)}
+.opt[disabled]{cursor:default}
+.fb{margin-top:12px;border-radius:10px;padding:10px 12px;font-size:13.5px;border-left:4px solid var(--okc);background:var(--okb)}
+.fb.x{border-left-color:var(--badc);background:var(--badb)}
+.fb .h{font-weight:700;font-size:14px;margin-bottom:2px}
+.fb .w{color:var(--sub);font-size:12.5px}
+.fb .r{color:var(--acc);font-weight:600;font-size:12.5px}
+.fb b{background:var(--hl);border-radius:3px;padding:0 2px}
+.qnav{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+.btn{border:1px solid var(--ink);background:var(--ink);color:var(--bg);padding:7px 16px;font-size:14px;font-weight:600}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.hint{font-size:12px;color:var(--sub);margin-top:8px}
+@media (min-width:600px){.card.wide{grid-column:span 2}}
+
+.mol{color:#222}.qbig,.opt .pic{color:#222}
+.ovd{margin-top:10px;max-width:760px}
+.ovd summary{cursor:pointer;font-size:13.5px;font-weight:700;color:var(--acc)}
+.ovt{border-collapse:collapse;width:100%;font-size:13px;margin-top:8px;background:var(--paper);border:1px solid var(--line)}
+.ovt th,.ovt td{border-bottom:1px solid var(--line);padding:5px 8px;text-align:left;vertical-align:top}
+.ovt th{font-size:12px;color:var(--sub);font-weight:600;background:var(--bg)}
+.ovt td:first-child{white-space:nowrap}
+.ovt.nk td:first-child{white-space:normal;word-break:break-all;width:42%}
+.ovd.masked{min-height:28px}
+
+.alab{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin:-2px 0 0}
+.alab .t{display:inline-block;font-family:'Poppins','Noto Sans KR',sans-serif;font-size:12.5px;font-weight:600;color:#fff;background:#b7791f;border-radius:6px;padding:1px 8px;line-height:1.5}
+.alab.masked{min-width:150px;min-height:24px}
+body.compact .alab .t{font-size:11px}
+.arrtab{margin:12px 0 4px;max-width:900px}
+.arrtab .ah{font-size:13.5px;font-weight:700;margin:0 0 5px;display:flex;align-items:center;gap:6px}
+.arrtab .ah::before{content:'';width:4px;height:15px;border-radius:2px;background:#b7791f}
+.arrtab table{border-collapse:collapse;width:100%;font-size:13px;background:var(--paper);border:1px solid var(--line)}
+.arrtab th,.arrtab td{border-bottom:1px solid var(--line);padding:5px 8px;text-align:left;vertical-align:top}
+.arrtab th{white-space:nowrap;font-size:12px;color:var(--sub);font-weight:600;background:var(--bg)}
+.arrtab td.no{white-space:nowrap;color:var(--sub);width:1%}
+.arrtab td.lb{font-weight:700;color:#8a5a12;width:34%}
+.arrtab td.lb .masked,.arrtab td.lb.masked{min-height:20px}
+.arrtab td.rg{color:var(--acc);font-size:12px;width:30%}
+body.compact .arrtab{display:none}
+@media (max-width:560px){.arrtab td.rg{display:none}.arrtab th.rg{display:none}}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .arrtab td.lb{color:#e8b25a}}
+</style><style>
+mark.ess{background:linear-gradient(transparent 52%,rgba(255,212,0,.62) 52%);color:inherit;padding:0 1px;border-radius:1px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) mark.ess{background:linear-gradient(transparent 52%,rgba(255,200,0,.38) 52%)}}
+:root[data-theme="dark"] mark.ess{background:linear-gradient(transparent 52%,rgba(255,200,0,.38) 52%)}
+body.nohl mark.ess{background:none;padding:0}
+.hlnote{display:inline-block;font-size:12px;color:var(--sub);margin-left:4px;vertical-align:middle}
+.hlnote mark.ess{font-weight:700}
+</style><style>
+.mol img.tb{max-width:100%;height:auto;max-height:190px;object-fit:contain}
+body.compact .mol img.tb{max-height:130px}
+.qbig img.tb{max-width:100%;height:auto;max-height:260px;object-fit:contain}
+.opt .pic img.tb{max-width:100%;height:auto;max-height:150px;object-fit:contain}
+.tbk{font-size:11.5px;color:var(--sub)}
+.card.k-br .badge{color:var(--sub)}
+.k-br .mol img.tb{opacity:.92}
+</style></head>
+<body><div class="wrap">
+<h1>9주차 · 17장 이뇨제 2종 합성 가리고 외우기</h1>
+<p class="lead">17장 이뇨제 2종(Hydrochlorothiazide · Furosemide). 앞 두 단계(chlorosulfonation → NH₄OH)가 같고 마지막 단계만 갈린다. 가릴 항목을 고르고, 가려진 칸을 눌러 답을 확인하세요. 다시 누르면 또 가려집니다. 구조 그림은 모두 교재 스킴에서 가져왔어요.</p>
+<div class="bar"><nav class="tabs"><button class="tab" data-id="hctz">Hydrochlorothiazide</button><button class="tab" data-id="furo">Furosemide</button><button class="tab allt" data-id="__all">2종 전체</button><button class="tab allt" data-id="quiz">구조↔명칭 퀴즈</button></nav>
+<div class="modes">
+<button class="mode" data-m="struct">출발·최종 구조 가리기</button>
+<button class="mode" data-m="mid">중간체 가리기</button>
+<button class="mode" data-m="name">이름 가리기</button>
+<button class="mode" data-m="reag">시약 가리기</button>
+<button class="mode" data-m="note">설명 가리기</button>
+<button class="mode" data-m="lab">반응명 가리기</button><button class="mode all" id="cover">전부 가리기</button>
+<button class="mode all" id="all">전부 보기</button>
+<button class="mode view" id="compact">바둑판으로 촘촘히</button>
+</div></div>
+<section class="drug" id="hctz" hidden><header class="dh"><div class="dn">Hydrochlorothiazide <span class="ko">하이드로클로로티아자이드</span></div><div class="cls">Thiazide계 이뇨제 (Novartis, 1959) · 17장 p.261–262 · <span class="tbk">그림: 교재 스킴</span></div><div class="iu h-name">6-Chloro-3,4-dihydro-2H-1,2,4-benzothiadiazine-7-sulfonamide 1,1-dioxide</div><p class="memo">m-클로로아닐린에 <b>chlorosulfonation</b>으로 SO₂Cl 두 개 → <b>NH₄OH</b>로 설폰아마이드 두 개 → <b>HCHO</b> 하나로 두 N을 CH₂로 묶어 고리를 닫는다. 3단계.</p><details class="ovd h-note"><summary>한눈에 보는 핵심반응</summary><table class="ovt"><thead><tr><th>단계</th><th>핵심반응</th><th>무엇이 바뀌나</th></tr></thead><tbody><tr><td>1</td><td><b>Chlorosulfonation (EAS ×2)</b></td><td>Ar–H ×2 → Ar–SO₂Cl ×2</td></tr><tr><td>2</td><td><b>Sulfonamide 형성</b></td><td>SO₂Cl → SO₂NH₂ ×2</td></tr><tr><td>3</td><td><b>HCHO 고리화 (N–CH₂–N)</b></td><td>NH₂ + SO₂NH₂ → 6원 고리</td></tr></tbody></table></details></header><h3 class="rt">합성 경로</h3><div class="grid"><article class="card k-start"><div class="top"><span class="badge">출발</span></div><div class="mol h-struct"><img class="tb" src="img/hctz_1.webp" width="163" height="81" alt="m-Chloroaniline" loading="lazy" decoding="async"></div><div class="nm h-name"><span>m-Chloroaniline</span><span class="num">1</span></div></article><article class="card k-mid"><div class="top"><span class="badge">1</span><div class="reag h-reag"><mark class="ess">HOSO₂Cl</mark>, <mark class="ess">NaCl</mark>, 150–160 °C, 3 h</div></div><div class="alab h-lab"><span class="t">Chlorosulfonation</span></div><div class="mol h-mid"><img class="tb" src="img/hctz_2.webp" width="220" height="96" alt="5-Chloroaniline-2,4-disulfonyl chloride" loading="lazy" decoding="async"></div><div class="nm h-name"><span>5-Chloroaniline-2,4-disulfonyl chloride</span><span class="num">2</span></div><p class="note h-note"><b>Chlorosulfonation (EAS)</b> · NH₂(o/p 지향)가 가리키는 두 자리에 SO₃H가 먼저 들어가고, HOSO₂Cl이 한 번 더 반응해 <b>arylsulfonic anhydride → ArSO₂Cl</b>. 그래서 HOSO₂Cl은 과량.</p></article><article class="card k-mid"><div class="top"><span class="badge">2</span><div class="reag h-reag"><mark class="ess">NH₄OH</mark>, 100 °C, 1 h</div></div><div class="alab h-lab"><span class="t">Sulfonamide formation</span></div><div class="mol h-mid"><img class="tb" src="img/hctz_3.webp" width="245" height="145" alt="4-Amino-6-chloro-1,3-benzenedisulfonamide" loading="lazy" decoding="async"></div><div class="nm h-name"><span>4-Amino-6-chloro-1,3-benzenedisulfonamide</span><span class="num">3</span></div><p class="note h-note"><b>설폰아마이드 형성</b> · NH₃가 S를 공격하고 Cl⁻가 빠진다 (아실 치환과 같은 부가–제거). SO₂Cl 두 개가 모두 SO₂NH₂.</p></article><article class="card k-final"><div class="top"><span class="badge">3</span><div class="reag h-reag"><mark class="ess">HCHO</mark>, 20% <mark class="ess">HCl</mark>/EtOAc, 90 °C, 1 h</div></div><div class="alab h-lab"><span class="t">Cyclocondensation (HCHO)</span></div><div class="mol h-struct"><img class="tb" src="img/hctz_4.webp" width="235" height="125" alt="Hydrochlorothiazide" loading="lazy" decoding="async"></div><div class="nm h-name"><span>Hydrochlorothiazide</span><span class="num">4</span></div><p class="note h-note"><b>고리화 축합</b> · 아닐린 NH₂ + HCHO → 이미늄 → 옆 SO₂NH₂의 N이 분자내 공격 → <b>N–CH₂–N</b> 6원 고리 (3,4-dihydro). HCHO 탄소 = 고리 C3.</p></article></div><aside class="pts h-note"><div class="pt-h">시험 포인트</div><ul><li>Chlorosulfonation: ArSO₃H → (HOSO₂Cl 한 번 더) arylsulfonic anhydride → <b>ArSO₂Cl</b></li><li>NH₂가 o/p 지향 → 두 자리에 SO₂Cl</li><li>HCHO 한 분자 = 고리의 CH₂ (aminal)</li><li>이름: benzothiadiazine 1,1-dioxide = 벤젠 + S·N·N 6원 고리, S에 O 두 개</li></ul><div class="pt-h" style="margin-top:8px">앞에서 나온 같은 반응</div><ul><li>HOSO₂Cl → 설폰아마이드: 중간 7주차 Sildenafil · Vardenafil</li><li>HCHO + 아민 → 이미늄: 중간 1주차 Zolpidem Mannich</li></ul></aside></section><section class="drug" id="furo" hidden><header class="dh"><div class="dn">Furosemide <span class="ko">푸로세마이드</span></div><div class="cls">고효능(loop) 이뇨제 (Sanofi-Aventis, 1966) · 17장 p.263 · <span class="tbk">그림: 교재 스킴</span></div><div class="iu h-name">4-Chloro-N-furfuryl-5-sulfamoylanthranilic acid</div><p class="memo">HCTZ와 앞 두 단계(<b>chlorosulfonation → NH₄OH</b>)가 똑같다. 마지막에 <b>SNAr</b>로 furfurylamine이 COOH 옆 Cl을 밀어낸다.</p><details class="ovd h-note"><summary>한눈에 보는 핵심반응</summary><table class="ovt"><thead><tr><th>단계</th><th>핵심반응</th><th>무엇이 바뀌나</th></tr></thead><tbody><tr><td>1</td><td><b>Chlorosulfonation (EAS)</b></td><td>Ar–H → Ar–SO₂Cl</td></tr><tr><td>2</td><td><b>Sulfonamide 형성</b></td><td>SO₂Cl → SO₂NH₂</td></tr><tr><td>3</td><td><b>SNAr</b></td><td>Ar–Cl → Ar–NH–CH₂(furyl)</td></tr></tbody></table></details></header><h3 class="rt">합성 경로</h3><div class="grid"><article class="card k-start"><div class="top"><span class="badge">출발</span></div><div class="mol h-struct"><img class="tb" src="img/furo_1.webp" width="208" height="95" alt="2,4-Dichlorobenzoic acid" loading="lazy" decoding="async"></div><div class="nm h-name"><span>2,4-Dichlorobenzoic acid</span><span class="num">1</span></div></article><article class="card k-mid"><div class="top"><span class="badge">1</span><div class="reag h-reag"><mark class="ess">HOSO₂Cl</mark>, <mark class="ess">NaCl</mark>, 155 °C, 2 h (85%)</div></div><div class="alab h-lab"><span class="t">Chlorosulfonation</span></div><div class="mol h-mid"><img class="tb" src="img/furo_2.webp" width="246" height="102" alt="5-Chlorosulfonyl-2,4-dichlorobenzoic acid" loading="lazy" decoding="async"></div><div class="nm h-name"><span>5-Chlorosulfonyl-2,4-dichlorobenzoic acid</span><span class="num">2</span></div><p class="note h-note"><b>Chlorosulfonation</b> · COOH(meta 지향)와 두 Cl(o/p 지향)이 함께 가리키는 C5에 SO₂Cl.</p></article><article class="card k-mid"><div class="top"><span class="badge">2</span><div class="reag h-reag"><mark class="ess">NH₄OH</mark>, 100 °C, 1 h (82%)</div></div><div class="alab h-lab"><span class="t">Sulfonamide formation</span></div><div class="mol h-mid"><img class="tb" src="img/furo_3.webp" width="268" height="101" alt="3-Sulfamoyl-4,6-dichlorobenzoic acid" loading="lazy" decoding="async"></div><div class="nm h-name"><span>3-Sulfamoyl-4,6-dichlorobenzoic acid</span><span class="num">3</span></div><p class="note h-note"><b>설폰아마이드 형성</b> · SO₂Cl → SO₂NH₂.</p></article><article class="card k-side"><div class="top"><span class="badge">시약</span></div><div class="mol h-struct"><img class="tb" src="img/furo_fa.webp" width="160" height="58" alt="2-Aminomethylfuran (furfurylamine)" loading="lazy" decoding="async"></div><div class="nm h-name"><span>2-Aminomethylfuran (furfurylamine)</span></div></article><article class="card k-final"><div class="top"><span class="badge">3</span><div class="reag h-reag"><mark class="ess">furfurylamine</mark>, DME, reflux, 6 h (31%)</div></div><div class="alab h-lab"><span class="t">SNAr</span></div><div class="mol h-struct"><img class="tb" src="img/furo_4.webp" width="319" height="135" alt="Furosemide" loading="lazy" decoding="async"></div><div class="nm h-name"><span>Furosemide</span><span class="num">4</span></div><p class="note h-note"><b>SNAr (NAS)</b> · 전자를 끄는 COOH·SO₂NH₂가 고리를 활성화 → 아민이 C–Cl에 부가(Meisenheimer) → Cl⁻ 이탈. <b>COOH 옆 Cl</b>이 치환돼 anthranilic acid 골격.</p></article></div><aside class="pts h-note"><div class="pt-h">시험 포인트</div><ul><li>HCTZ와 1·2단계 동일, 3단계만 SNAr</li><li>SNAr 조건: EWG(COOH, SO₂NH₂)가 이탈기 o/p에</li><li>이름 anthranilic acid = 2-아미노벤조산 → SNAr로 생긴 N이 COOH 옆</li></ul><div class="pt-h" style="margin-top:8px">앞에서 나온 같은 반응</div><ul><li>SNAr: 중간 2주차 Olanzapine · 6주차 Terazosin · 7주차 Quetiapine</li><li>Chlorosulfonation: 17장 Hydrochlorothiazide</li></ul></aside></section><section class="quizsec" id="quiz" hidden>
+<div class="qh">구조 ↔ 명칭 퀴즈</div>
+<p class="qsub" id="qdesc"></p>
+<div class="qrow"><span class="qlab">대상</span><div id="qtarget" class="qrow" style="margin:0"></div></div>
+<div class="qrow" id="qscoperow"><span class="qlab">범위</span><div id="qscope" class="qrow" style="margin:0"></div></div>
+<div class="qrow"><span class="qlab">유형</span><div id="qtype" class="qrow" style="margin:0"></div></div>
+<div class="score"><span>점수 <b id="qs">0</b> / <b id="qn">0</b></span><span>연속 정답 <b id="qst">0</b></span><span>남은 문제 <b id="ql">0</b></span><span>오답 노트 <b id="qw">0</b></span></div>
+<div class="qcard"><div id="qbox"></div>
+<div class="qnav"><button class="btn" id="qnext">다음 문제</button><button class="btn ghost" id="qwrong">오답만 다시 풀기</button><button class="btn ghost" id="qreset">처음부터</button></div>
+<div class="hint">키보드: 1–4로 고르기, Enter로 다음 문제</div></div>
+</section>
+<p class="foot">구조식은 골격 구조입니다. 선 끝은 메틸기, 꺾인 지점은 탄소입니다. 카드 윗선 색: 갈색 = 출발물질, 회색 = 중간체, 보라 = 시약·반응 상대, 청록 = 최종 생성물. 노란 배경은 그 단계에서 가장 자주 묻는 포인트입니다. 쐐기(굵은 삼각형) = 앞으로, 점선 쐐기 = 뒤로.</p>
+</div><script>
+const modes={struct:'h-struct',mid:'h-mid',name:'h-name',reag:'h-reag',note:'h-note',lab:'h-lab'};
+const on=new Set();
+function apply(){
+  for(const [k,c] of Object.entries(modes)){
+    document.querySelectorAll('.'+c).forEach(el=>{el.classList.toggle('masked',on.has(k));});
+  }
+  document.querySelectorAll('.mode[data-m]').forEach(b=>b.classList.toggle('on',on.has(b.dataset.m)));
+  try{localStorage.setItem('w9bmodes',JSON.stringify([...on]));}catch(e){}
+}
+document.querySelectorAll('.mode[data-m]').forEach(b=>b.addEventListener('click',()=>{
+  const m=b.dataset.m; on.has(m)?on.delete(m):on.add(m); apply();}));
+document.getElementById('all').addEventListener('click',()=>{on.clear();apply();});
+document.getElementById('cover').addEventListener('click',()=>{Object.keys(modes).forEach(k=>on.add(k));apply();});
+const cbtn=document.getElementById('compact');
+function setCompact(v){document.body.classList.toggle('compact',v);cbtn.classList.toggle('on',v);
+  cbtn.textContent=v?'설명 있는 카드로':'바둑판으로 촘촘히';try{localStorage.setItem('w9bcompact',v?'1':'0');}catch(e){}}
+cbtn.addEventListener('click',()=>setCompact(!document.body.classList.contains('compact')));
+const cls2mode=Object.fromEntries(Object.entries(modes).map(([k,c])=>[c,k]));
+document.addEventListener('click',e=>{
+  const el=e.target.closest('.h-struct,.h-mid,.h-name,.h-reag,.h-note,.h-lab'); if(!el) return;
+  const c=[...el.classList].find(x=>cls2mode[x]); if(!c) return;
+  if(el.classList.contains('masked')){el.classList.remove('masked');}
+  else if(on.has(cls2mode[c])){el.classList.add('masked');}
+  e.stopPropagation();
+},true);
+function show(id){
+  document.querySelectorAll('.drug').forEach(s=>s.hidden=(id==='quiz'||(id!=='__all'&&s.id!==id)));
+  const qz=document.getElementById('quiz'); if(qz){qz.hidden=id!=='quiz'; document.querySelector('.modes').style.display=id==='quiz'?'none':'';}
+  if(id==='quiz'&&window.__quizStart) setTimeout(()=>window.__quizStart(),0);
+  document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('on',t.dataset.id===id));
+  try{localStorage.setItem('w9btab',id);}catch(e){}
+  apply();
+}
+document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>{show(t.dataset.id);window.scrollTo({top:0});}));
+let first='hctz';
+try{const s=JSON.parse(localStorage.getItem('w9bmodes')||'[]');s.forEach(m=>modes[m]&&on.add(m));
+const t=localStorage.getItem('w9btab'); if(t&&(t==='__all'||document.getElementById(t))) first=t;
+if(localStorage.getItem('w9bcompact')==='1') setCompact(true);}catch(e){}
+show(first);
+
+(function(){
+const IT=[{"m": "hctz_0", "n": "m-Chloroaniline", "d": "hctz", "w": "Hydrochlorothiazide", "k": "출발물질", "r": "", "t": "", "f": false, "iu": "", "dn": "Hydrochlorothiazide · 하이드로클로로티아자이드"}, {"m": "hctz_1", "n": "5-Chloroaniline-2,4-disulfonyl chloride", "d": "hctz", "w": "Hydrochlorothiazide", "k": "1단계 생성물", "r": "HOSO₂Cl, NaCl, 150–160 °C, 3 h", "t": "<b>Chlorosulfonation (EAS)</b> · NH₂(o/p 지향)가 가리키는 두 자리에 SO₃H가 먼저 들어가고, HOSO₂Cl이 한 번 더 반응해 <b>arylsulfonic anhydride → ArSO₂Cl</b>. 그래서 HOSO₂Cl은 과량.", "f": false, "iu": "", "dn": "Hydrochlorothiazide · 하이드로클로로티아자이드"}, {"m": "hctz_2", "n": "4-Amino-6-chloro-1,3-benzenedisulfonamide", "d": "hctz", "w": "Hydrochlorothiazide", "k": "2단계 생성물", "r": "NH₄OH, 100 °C, 1 h", "t": "<b>설폰아마이드 형성</b> · NH₃가 S를 공격하고 Cl⁻가 빠진다 (아실 치환과 같은 부가–제거). SO₂Cl 두 개가 모두 SO₂NH₂.", "f": false, "iu": "", "dn": "Hydrochlorothiazide · 하이드로클로로티아자이드"}, {"m": "hctz_3", "n": "Hydrochlorothiazide", "d": "hctz", "w": "Hydrochlorothiazide", "k": "최종 생성물", "r": "HCHO, 20% HCl/EtOAc, 90 °C, 1 h", "t": "<b>고리화 축합</b> · 아닐린 NH₂ + HCHO → 이미늄 → 옆 SO₂NH₂의 N이 분자내 공격 → <b>N–CH₂–N</b> 6원 고리 (3,4-dihydro). HCHO 탄소 = 고리 C3.", "f": true, "iu": "6-Chloro-3,4-dihydro-2H-1,2,4-benzothiadiazine-7-sulfonamide 1,1-dioxide", "dn": "Hydrochlorothiazide · 하이드로클로로티아자이드"}, {"m": "furo_0", "n": "2,4-Dichlorobenzoic acid", "d": "furo", "w": "Furosemide", "k": "출발물질", "r": "", "t": "", "f": false, "iu": "", "dn": "Furosemide · 푸로세마이드"}, {"m": "furo_1", "n": "5-Chlorosulfonyl-2,4-dichlorobenzoic acid", "d": "furo", "w": "Furosemide", "k": "1단계 생성물", "r": "HOSO₂Cl, NaCl, 155 °C, 2 h (85%)", "t": "<b>Chlorosulfonation</b> · COOH(meta 지향)와 두 Cl(o/p 지향)이 함께 가리키는 C5에 SO₂Cl.", "f": false, "iu": "", "dn": "Furosemide · 푸로세마이드"}, {"m": "furo_2", "n": "3-Sulfamoyl-4,6-dichlorobenzoic acid", "d": "furo", "w": "Furosemide", "k": "2단계 생성물", "r": "NH₄OH, 100 °C, 1 h (82%)", "t": "<b>설폰아마이드 형성</b> · SO₂Cl → SO₂NH₂.", "f": false, "iu": "", "dn": "Furosemide · 푸로세마이드"}, {"m": "furo_3", "n": "2-Aminomethylfuran (furfurylamine)", "d": "furo", "w": "Furosemide", "k": "시약·반응 상대", "r": "", "t": "", "f": false, "iu": "", "dn": "Furosemide · 푸로세마이드"}, {"m": "furo_4", "n": "Furosemide", "d": "furo", "w": "Furosemide", "k": "최종 생성물", "r": "furfurylamine, DME, reflux, 6 h (31%)", "t": "<b>SNAr (NAS)</b> · 전자를 끄는 COOH·SO₂NH₂가 고리를 활성화 → 아민이 C–Cl에 부가(Meisenheimer) → Cl⁻ 이탈. <b>COOH 옆 Cl</b>이 치환돼 anthranilic acid 골격.", "f": true, "iu": "4-Chloro-N-furfuryl-5-sulfamoylanthranilic acid", "dn": "Furosemide · 푸로세마이드"}], SV={"hctz_0": "<img class=\"tb\" src=\"img/hctz_1.webp\" width=\"163\" height=\"81\" alt=\"구조\" loading=\"lazy\" decoding=\"async\">", "hctz_1": "<img class=\"tb\" src=\"img/hctz_2.webp\" width=\"220\" height=\"96\" alt=\"구조\" loading=\"lazy\" decoding=\"async\">", "hctz_2": "<img class=\"tb\" src=\"img/hctz_3.webp\" width=\"245\" height=\"145\" alt=\"구조\" loading=\"lazy\" decoding=\"async\">", "hctz_3": "<img class=\"tb\" src=\"img/hctz_4.webp\" width=\"235\" height=\"125\" alt=\"구조\" loading=\"lazy\" decoding=\"async\">", "furo_0": "<img class=\"tb\" src=\"img/furo_1.webp\" width=\"208\" height=\"95\" alt=\"구조\" loading=\"lazy\" decoding=\"async\">", "furo_1": "<img class=\"tb\" src=\"img/furo_2.webp\" width=\"246\" height=\"102\" alt=\"구조\" loading=\"lazy\" decoding=\"async\">", "furo_2": "<img class=\"tb\" src=\"img/furo_3.webp\" width=\"268\" height=\"101\" alt=\"구조\" loading=\"lazy\" decoding=\"async\">", "furo_3": "<img class=\"tb\" src=\"img/furo_fa.webp\" width=\"160\" height=\"58\" alt=\"구조\" loading=\"lazy\" decoding=\"async\">", "furo_4": "<img class=\"tb\" src=\"img/furo_4.webp\" width=\"319\" height=\"135\" alt=\"구조\" loading=\"lazy\" decoding=\"async\">"};
+const DR=[["all", "전체"], ["hctz", "Hydrochlorothiazide"], ["furo", "Furosemide"]];
+const TG=[['drug','약물 2종'],['all','중간체까지 전체']];
+const TYD=[['mix','섞어서'],['s2n','구조 → 약물명'],['n2s','약물명 → 구조'],['iu','IUPAC → 구조'],['s2i','구조 → IUPAC']];
+const TYA=[['mix','섞어서'],['s2n','구조 → 이름'],['n2s','이름 → 구조']];
+const DESC={drug:'최종 약물 2종의 약물명·IUPAC 명칭과 구조식을 짝지어요. 보기는 2종 안에서 나옵니다.',all:'출발물질부터 중간체, 최종 약물까지 전부 섞어서 나옵니다. 오답 보기는 가능하면 같은 약물의 다른 화합물에서 골라서, 비슷하게 생긴 것끼리 구별하게 했어요.'};
+let target='drug', scope='all', type='mix', deck=[], cur=null, answered=false, sc=0, n=0, streak=0, wrong=[], review=false;
+const $=id=>document.getElementById(id);
+try{const s=JSON.parse(localStorage.getItem('w9bquiz')||'{}'); if(s.target)target=s.target; if(s.scope)scope=s.scope; if(s.type)type=s.type; if(Array.isArray(s.wrong))wrong=s.wrong.filter(m=>IT.some(x=>x.m===m));}catch(e){}
+function save(){try{localStorage.setItem('w9bquiz',JSON.stringify({target,scope,type,wrong}));}catch(e){}}
+function tlist(){return target==='drug'?TYD:TYA;}
+function layout(){ $('qscoperow').style.display=target==='drug'?'none':''; $('qdesc').textContent=DESC[target];
+  if(!tlist().some(x=>x[0]===type)) type='mix'; chips($('qtype'),tlist(),()=>type,v=>type=v); }
+function chips(el,list,get,set){el.innerHTML='';list.forEach(([k,l])=>{const b=document.createElement('button');b.className='chip'+(get()===k?' on':'');b.textContent=l;b.onclick=()=>{set(k);save();chips(el,list,get,set);review=false;newDeck();next();};el.appendChild(b);});}
+function shuf(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+function pool(){ if(target==='drug') return IT.filter(x=>x.f); return IT.filter(x=>scope==='all'||x.d===scope);}
+function newDeck(){let p=pool(); if(target==='drug'){p=p.concat(p);} deck=shuf(review?IT.filter(x=>wrong.includes(x.m)&&(target!=='drug'||x.f)):p);upd();}
+function upd(){$('qs').textContent=sc;$('qn').textContent=n;$('qst').textContent=streak;$('ql').textContent=deck.length;$('qw').textContent=wrong.length;}
+function distract(it,k,finals){
+  let same=IT.filter(x=>x.m!==it.m&&x.d===it.d&&(!finals||x.f));
+  let other=IT.filter(x=>x.m!==it.m&&x.d!==it.d&&(!finals||x.f));
+  if(finals){same=[];other=IT.filter(x=>x.f&&x.m!==it.m);}
+  let pick=shuf(same).slice(0,k); if(pick.length<k) pick=pick.concat(shuf(other).slice(0,k-pick.length));
+  return pick;
+}
+function next(){
+  if(!deck.length){ if(review){review=false;} newDeck(); }
+  if(cur&&deck.length>1&&deck[deck.length-1].m===cur.m){const j=Math.floor(Math.random()*(deck.length-1));[deck[j],deck[deck.length-1]]=[deck[deck.length-1],deck[j]];}
+  cur=deck.pop(); answered=false; upd();
+  const D=target==='drug'&&cur.f;
+  let t=type; if(type==='mix') t=D?['s2n','n2s','iu','s2i'][Math.floor(Math.random()*4)]:(Math.random()<0.5?'s2n':'n2s');
+  if((t==='iu'||t==='s2i')&&!cur.f) t='n2s';
+  cur.qt=t;
+  const nmOf=o=>D?o.dn:o.n;
+  const opts=shuf([cur].concat(distract(cur,3,D)));
+  cur.opts=opts;
+  const box=$('qbox'); let h='';
+  const R=review?'오답 복습 · ':'';
+  if(t==='s2n'||t==='s2i'){
+    const lab=t==='s2i'?'이 약물의 IUPAC 명칭은?':(D?'이 약물은?':'이 구조의 이름은?');
+    h+=`<div class="qp">${R}${lab}</div><div class="qbig">${SV[cur.m]}</div><div class="opts txt">`+
+      opts.map((o,i)=>`<button class="opt" data-i="${i}"><span class="k">${i+1}</span><span${t==='s2i'?' style="font-size:13px"':''}>${t==='s2i'?o.iu:nmOf(o)}</span></button>`).join('')+'</div>';
+  }else{
+    const q=t==='iu'?`<div class="qp">${R}이 IUPAC 명칭의 구조는?</div><div class="qname iu">${cur.iu}</div>`
+                   :`<div class="qp">${R}${D?'이 약물의 구조는?':'이 화합물의 구조는?'}</div><div class="qname">${nmOf(cur)}</div>`;
+    h+=q+'<div class="opts img">'+opts.map((o,i)=>`<button class="opt" data-i="${i}"><span class="k">${i+1}</span><div class="pic">${SV[o.m]}</div></button>`).join('')+'</div>';
+  }
+  h+='<div id="qfb"></div>';
+  box.innerHTML=h;
+  box.querySelectorAll('.qbig svg').forEach(s=>{const w=+s.getAttribute('width');s.style.width=Math.min(w*1.8,680)+'px';s.style.height='auto';s.style.maxHeight='none';});
+  box.querySelectorAll('.pic svg').forEach(s=>{const w=+s.getAttribute('width');s.style.width=(w*1.1)+'px';s.style.height='auto';});
+  box.querySelectorAll('.opt').forEach(b=>b.onclick=()=>choose(+b.dataset.i));
+}
+function choose(i){
+  if(answered) return; answered=true; n++;
+  const ok=cur.opts[i].m===cur.m;
+  const bs=[...document.querySelectorAll('#qbox .opt')];
+  bs.forEach((b,j)=>{b.disabled=true; if(cur.opts[j].m===cur.m) b.classList.add('ok'); else if(j===i) b.classList.add('bad');});
+  if(ok){sc++;streak++; if(review) wrong=wrong.filter(m=>m!==cur.m);} else {streak=0; if(!wrong.includes(cur.m)) wrong.push(cur.m);}
+  save(); upd();
+  const picked=cur.opts[i];
+  const D=target==='drug'&&cur.f; const nm=D?cur.dn:cur.n;
+  $('qfb').innerHTML=`<div class="fb${ok?'':' x'}"><div class="h">${ok?'정답':'오답'} — ${nm}</div>`+
+    (D?`<div class="w">${cur.iu}</div>`:`<div class="w">${cur.w} · ${cur.k}</div>`+(cur.r?`<div class="r">${cur.r}</div>`:'')+`<div>${cur.t}</div>`)+
+    (!ok?`<div class="w" style="margin-top:4px">고른 것: ${D?picked.dn:picked.n}${D?'':` (${picked.w} · ${picked.k})`}</div>`:'')+`</div>`;
+}
+$('qnext').onclick=()=>next();
+$('qreset').onclick=()=>{sc=0;n=0;streak=0;review=false;newDeck();next();};
+$('qwrong').onclick=()=>{if(!wrong.length){$('qfb')&&($('qfb').innerHTML='<div class="fb"><div class="h">오답 노트가 비어 있어요</div></div>');return;} review=true;newDeck();next();};
+document.addEventListener('keydown',e=>{
+  if(document.getElementById('quiz').hidden) return;
+  if(/^[1-4]$/.test(e.key)){const b=document.querySelector(`#qbox .opt[data-i="${+e.key-1}"]`); if(b) b.click();}
+  else if(e.key==='Enter'&&answered){e.preventDefault();next();}
+});
+chips($('qtarget'),TG,()=>target,v=>{target=v;layout();});
+chips($('qscope'),DR,()=>scope,v=>scope=v);
+layout();
+window.__quizStart=()=>{if(!cur){newDeck();next();}};
+})();
+</script><style>
+.dstar{font:inherit;font-size:13px;font-weight:700;border:1.5px solid var(--line,#ccc);background:transparent;color:var(--sub,#777);border-radius:999px;padding:2px 11px;margin-left:10px;vertical-align:middle;cursor:pointer}
+.dstar.on{border-color:#d4a017;color:#b7791f;background:rgba(212,160,23,.13)}
+.tab .sm{color:#d4a017;margin-right:3px}
+</style><script>
+(function(){
+const W=9;
+function ld(){try{const s=JSON.parse(localStorage.getItem('hubstar')||'{}');s.d=s.d||[];s.r=s.r||[];return s;}catch(e){return {d:[],r:[]};}}
+function sv(s){try{localStorage.setItem('hubstar',JSON.stringify(s));}catch(e){} try{parent&&parent!==window&&parent.postMessage({hubstar:1},'*');}catch(e){}}
+let S=ld();
+const key=id=>W+'|'+id;
+function paint(){
+  document.querySelectorAll('section.drug').forEach(sec=>{const b=sec.querySelector('.dstar');if(!b)return;const on=S.d.includes(key(sec.id));b.classList.toggle('on',on);b.textContent=on?'★ 별표됨':'☆ 별표';});
+  document.querySelectorAll('.tab[data-id]').forEach(t=>{const id=t.dataset.id;if(id.startsWith('__')||id==='quiz')return;let m=t.querySelector('.sm');const on=S.d.includes(key(id));if(on&&!m){m=document.createElement('span');m.className='sm';m.textContent='★';t.prepend(m);}else if(!on&&m)m.remove();});
+  const st=document.querySelector('.tab[data-id="__star"]');if(st)st.textContent='★ 별표만 ('+S.d.filter(k=>k.startsWith(W+'|')).length+')';
+}
+document.querySelectorAll('section.drug').forEach(sec=>{const dn=sec.querySelector('.dn');if(!dn)return;const b=document.createElement('button');b.className='dstar';b.type='button';
+  b.onclick=e=>{e.stopPropagation();S=ld();const k=key(sec.id);S.d=S.d.includes(k)?S.d.filter(x=>x!==k):S.d.concat(k);sv(S);paint();};dn.appendChild(b);});
+const nav=document.querySelector('nav.tabs');
+if(nav){const t=document.createElement('button');t.className='tab';t.dataset.id='__star';nav.appendChild(t);
+  t.addEventListener('click',()=>{S=ld();const ids=S.d.filter(k=>k.startsWith(W+'|')).map(k=>k.split('|')[1]);
+    document.querySelectorAll('.drug').forEach(s=>s.hidden=!ids.includes(s.id));const qz=document.getElementById('quiz');if(qz)qz.hidden=true;const md=document.querySelector('.modes');if(md)md.style.display='';
+    document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('on',x===t));
+    let em=document.getElementById('staremp');if(!ids.length){if(!em){em=document.createElement('p');em.id='staremp';em.style.cssText='color:var(--sub,#777);margin:24px 0';em.textContent='아직 별표 친 약물이 없어요. 약물 이름 옆 ☆을 누르면 여기에 모여요.';nav.after(em);}}else if(em)em.remove();
+    window.scrollTo({top:0});},true);
+  nav.addEventListener('click',e=>{const b=e.target.closest('.tab');if(b&&b.dataset.id!=='__star'){const em=document.getElementById('staremp');if(em)em.remove();}});}
+window.addEventListener('storage',e=>{if(e.key==='hubstar'){S=ld();paint();}});
+paint();
+})();
+</script><style>
+u.ul{text-decoration:underline;text-decoration-color:#e8590c;text-decoration-thickness:2.5px;text-underline-offset:2px;text-decoration-skip-ink:none}
+#ulbar{position:fixed;left:50%;bottom:calc(14px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);display:none;gap:6px;z-index:999;background:#1d2329;padding:6px;border-radius:999px;box-shadow:0 4px 16px rgba(0,0,0,.25)}
+#ulbar.on{display:flex}
+#ulbar button{font:inherit;font-size:14px;font-weight:700;border:0;border-radius:999px;padding:7px 14px;cursor:pointer;background:#e8590c;color:#fff;-webkit-user-select:none;user-select:none}
+#ulbar button.g{background:#3a434b}
+.ulclr{font:inherit;font-size:12px;border:1px solid var(--line,#ccc);background:transparent;color:var(--sub,#777);border-radius:999px;padding:2px 10px;margin-left:6px;vertical-align:middle;cursor:pointer}
+</style><p style="text-align:center;color:#8a949c;font-size:11px;margin:32px 0 12px">© 면역반 민서정리 @water_.color_</p><div id="ulbar"><button id="uladd" type="button">＿ 밑줄 긋기</button><button id="uldel" class="g" type="button">밑줄 지우기</button></div><script>
+(function(){
+const W=9, SK='ul'+W, SEL='.memo,.note,.reag,.nm,.cls,.iu';
+function ld(){try{return JSON.parse(localStorage.getItem(SK)||'{}');}catch(e){return {};}}
+function cands(){return [...document.querySelectorAll('section.drug')].flatMap(sec=>[...sec.querySelectorAll(SEL)].map((el,i)=>({el,k:sec.id+'|'+i,sec})));}
+const C=cands(); const byEl=new Map(C.map(c=>[c.el,c]));
+const st=ld(); C.forEach(c=>{if(st[c.k]!=null) c.el.innerHTML=st[c.k];});
+function save(list){const s=ld(); list.forEach(c=>{if(c.el.querySelector('u.ul')) s[c.k]=c.el.innerHTML; else delete s[c.k];}); try{localStorage.setItem(SK,JSON.stringify(s));}catch(e){} paintClr();}
+let saved=null;
+function hits(r){return C.filter(c=>!c.sec.hidden&&r.intersectsNode(c.el));}
+document.addEventListener('selectionchange',()=>{
+  const sel=window.getSelection(); const bar=document.getElementById('ulbar');
+  if(!sel.rangeCount||sel.isCollapsed){ setTimeout(()=>{const s2=window.getSelection(); if(!s2.rangeCount||s2.isCollapsed){bar.classList.remove('on');}},250); return; }
+  const r=sel.getRangeAt(0); if(hits(r).length&&String(sel).trim()){saved=r.cloneRange(); bar.classList.add('on');} else bar.classList.remove('on');
+});
+function sub(r,el){const s=document.createRange(); s.selectNodeContents(el); if(el.contains(r.startContainer)) s.setStart(r.startContainer,r.startOffset); if(el.contains(r.endContainer)) s.setEnd(r.endContainer,r.endOffset); return s;}
+function unwrap(u){const p=u.parentNode; while(u.firstChild)p.insertBefore(u.firstChild,u); p.removeChild(u); p.normalize();}
+function add(){ if(!saved) return; const hs=hits(saved);
+  hs.forEach(c=>{const s=sub(saved,c.el); if(s.collapsed||!s.toString().trim()) return; const f=s.extractContents(); f.querySelectorAll&&f.querySelectorAll('u.ul').forEach(unwrap); const u=document.createElement('u'); u.className='ul'; u.appendChild(f); s.insertNode(u);
+    c.el.querySelectorAll('u.ul').forEach(x=>{if(!x.textContent) x.remove();});});
+  save(hs); done(); }
+function del(){ if(!saved) return; const hs=hits(saved);
+  hs.forEach(c=>{[...c.el.querySelectorAll('u.ul')].forEach(u=>{if(saved.intersectsNode(u)) unwrap(u);});});
+  save(hs); done(); }
+function done(){saved=null; try{window.getSelection().removeAllRanges();}catch(e){} document.getElementById('ulbar').classList.remove('on');}
+['uladd','uldel'].forEach(id=>{const b=document.getElementById(id); b.addEventListener('mousedown',e=>e.preventDefault()); b.addEventListener('touchstart',e=>{e.preventDefault(); id==='uladd'?add():del();},{passive:false}); b.addEventListener('click',()=>{id==='uladd'?add():del();});});
+function paintClr(){document.querySelectorAll('section.drug').forEach(sec=>{const dn=sec.querySelector('.dn'); if(!dn) return; let b=dn.querySelector('.ulclr'); const has=!!sec.querySelector('u.ul');
+  if(has&&!b){b=document.createElement('button');b.className='ulclr';b.type='button';b.textContent='밑줄 전체 지우기';b.onclick=e=>{e.stopPropagation(); if(!b.dataset.arm){b.dataset.arm='1';b.textContent='한 번 더 누르면 전부 삭제';setTimeout(()=>{if(b.isConnected){delete b.dataset.arm;b.textContent='밑줄 전체 지우기';}},3000);return;} const list=C.filter(c=>c.sec===sec); list.forEach(c=>c.el.querySelectorAll('u.ul').forEach(unwrap)); save(list);}; dn.appendChild(b);}
+  else if(!has&&b) b.remove();});}
+paintClr();
+})();
+</script><script>(function(){var K='hubhl',off=false;try{off=localStorage.getItem(K)==='0'}catch(e){}
+document.body.classList.toggle('nohl',off);var m=document.querySelector('.modes');if(!m)return;
+var b=document.createElement('button');b.type='button';b.className='mode view';
+function paint(){b.innerHTML=off?'형광펜 켜기':'<mark class="ess">형광펜</mark> 필수 시약 끄기';b.classList.toggle('on',false);}
+paint();b.onclick=function(){off=!off;document.body.classList.toggle('nohl',off);try{localStorage.setItem(K,off?'0':'1')}catch(e){}paint();};m.appendChild(b);})();</script></body></html>
